@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Delights Bakery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" 
+      rel="stylesheet" 
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" 
+      crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f4e4;
+            font-family: 'Poppins', sans-serif;
+        }
+        .navbar {
+            background-color: #afdae9;
+        }
+        .navbar a {
+            color: #333 !important;
+            font-weight: 500;
+        }
+        .nav-underline {
+            position: relative;
+            display: inline-block;
+        }
+        .nav-underline::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: currentColor;
+            transition: width 0.3s ease, transform 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .nav-underline:hover::after {
+            width: 90%;
+            transform: translateX(-50%);
+        }
+        .btn-outline-dark:hover {
+            color: white !important;
+            background-color: #212529 !important; 
+            border-color: #212529 !important;
+        }
+        .hero {
+            background: linear-gradient(rgba(248, 244, 228, 0.9), rgba(248, 244, 228, 0.5)), 
+            url('https://plus.unsplash.com/premium_photo-1665669263531-cdcbe18e7fe4?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmFrZXJ5fGVufDB8fDB8fHww') 
+            center/cover no-repeat;
+            height: 45vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.2s ease, transform 1.2s ease;
+        }
+        .hero.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        section {
+            padding: 64px 0;
+        }
+        .section-title {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .shop-gallery .shop-img-wrapper {
+            height: 300px;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        .shop-gallery .shop-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .shop-gallery .shop-img-wrapper img:hover {
+            transform: scale(1.05);
+        }
+        .team-member img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+        footer {
+    background-color: #afdae9;
+    color: #333;
+    padding: 48px 0;
+}
+.newsletter input {
+    border: none;
+    padding: 8px;
+    width: 70%;
+    border-radius: 4px;
+}
+.newsletter button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+}
+        @media (min-width: 900px) {
+            #contact .footer-follow {
+                padding-left: 150px; 
+            }
+        }
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-up.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .fade-right {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-right.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .fade-left {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-left.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .zoom-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .zoom-in.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light py-3 shadow-sm sticky-top" style="background-color: #afdae9;">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html" style="font-size: 28px">
+            <i>Sweet Delights</i>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a href="about.html" class="nav-link nav-underline">About Us</a></li>
+                <li class="nav-item"><a href="product.html" class="nav-link nav-underline">Products</a></li>
+                <li class="nav-item"><a href="services.html" class="nav-link nav-underline">Services</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link nav-underline">Contact Us</a></li>
+            </ul>
+            <div class="d-flex gap-2">
+                <a href="order.html" class="btn btn-outline-dark">Order Now</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<section class="hero text-dark">
+    <div>
+        <h1 class="fw-bold mb-3">About Us</h1>
+        <h5>Learn our story!</h5>
+    </div>
+</section>
+<section class="fade-up">
+    <div class="container">
+        <p class="text-center mx-auto" style="max-width: 800px;">
+            Sweet Delights Bakery started with a passion for creating mouth-watering pastries and desserts
+            that bring joy to every occasion. From the softest croissants to decadent cakes, each creation
+            is crafted with love, using only the finest ingredients. Our mission is to make every bite a
+            sweet memory for our customers.
+        </p>
+    </div>
+</section>
+<section style="background-color: #f0e6d2;">
+    <div class="container">
+        <div class="row g-4 shop-gallery">
+            <div class="col-md-4">
+                <div class="shop-img-wrapper">
+                    <img src="https://bdc2020.o0bc.com/wp-content/uploads/2021/08/https___assets.bwbx_.io_images_users_iqjWHBFdfxIU_ifnzYQoHiv3k_v0_piFq5T3pJF0qzS8rF9LjsWaQ_-1x-1-611d326c1d807.jpg" class="img-fluid" alt="Shop 1">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="shop-img-wrapper">
+                    <img src="https://img.freepik.com/premium-photo/modern-bakery-interior-with-fresh-artisan-breads-pastries-display_1051040-4211.jpg" class="img-fluid" alt="Shop 2">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="shop-img-wrapper">
+                    <img src="https://fruitbasket.limepack.com/blog/wp-content/uploads/2024/06/assorted-pastries-arranged-in-dispaly.jpg" class="img-fluid" alt="Shop 3">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section style="background: linear-gradient(120deg, #f8f4e4, #faf0e6); padding: 80px 0;">
+    <div class="container">
+        <h2 class="text-center mb-5">Our Values</h2>
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-6">
+                <div class="p-4 rounded shadow-sm fade-right" style="background-color: #f0f8ff; border-left: 5px solid #afdae9;">
+                    <h5 class="mb-3">Passion</h5>
+                    <p>We pour our heart into every recipe, ensuring each treat is crafted with care and attention.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="p-4 rounded shadow-sm fade-left" style="background-color: #f0f8ff; border-left: 5px solid #afdae9;">
+                    <h5 class="mb-3">Quality</h5>
+                    <p>We use only fresh, premium ingredients to guarantee unmatched flavor and consistency.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="p-4 rounded shadow-sm fade-right" style="background-color: #f0f8ff; border-left: 5px solid #afdae9;">
+                    <h5 class="mb-3">Community</h5>
+                    <p>We value our customers and strive to create a welcoming space where everyone feels at home.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="p-4 rounded shadow-sm fade-left" style="background-color: #f0f8ff; border-left: 5px solid #afdae9;">
+                    <h5 class="mb-3">Innovation</h5>
+                    <p>We constantly experiment with new recipes and techniques to bring fresh experiences to our patrons.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section style="background-color: #f0e6d2; padding: 60px 0;">
+    <div class="container">
+        <h2 class="section-title text-center mb-5">Meet Our Team</h2>
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-4 text-center">
+                <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e" alt="Sarah Johnson" class="rounded-circle img-fluid shadow zoom-in team-member" style="width: 180px; height: 180px; object-fit: cover;">
+                <h5 class="mt-3" style="color: #3C3C3C">Sarah Johnson</h5>
+                <p style="color: #555;">Head Pastry Chef</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde" alt="Emily Carter" class="rounded-circle img-fluid shadow zoom-in team-member" style="width: 180px; height: 180px; object-fit: cover;">
+                <h5 class="mt-3" style="color: #3C3C3C">Emily Carter</h5>
+                <p style="color: #555;">Bakery Manager</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <img src="https://images.unsplash.com/photo-1520813792240-56fc4a3765a7" alt="James Lee" class="rounded-circle img-fluid shadow zoom-in team-member" style="width: 180px; height: 180px; object-fit: cover;">
+                <h5 class="mt-3" style="color: #3C3C3C">James Lee</h5>
+                <p style="color: #555;">Creative Designer</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <img src="https://images.unsplash.com/photo-1603415526960-f7e0328c63b1" alt="Thomas Brown" class="rounded-circle img-fluid shadow zoom-in team-member" style="width: 180px; height: 180px; object-fit: cover;">
+                <h5 class="mt-3" style="color: #3C3C3C">Thomas Brown</h5>
+                <p style="color: #555;">Customer Experience Lead</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d" alt="Michael Smith" class="rounded-circle img-fluid shadow zoom-in team-member" style="width: 180px; height: 180px; object-fit: cover;">
+                <h5 class="mt-3" style="color: #3C3C3C">Michael Smith</h5>
+                <p style="color: #555;">Marketing Specialist</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1" alt="Sophia Turner" class="rounded-circle img-fluid shadow zoom-in team-member" style="width: 180px; height: 180px; object-fit: cover;">
+                <h5 class="mt-3" style="color: #3C3C3C">Sophia Turner</h5>
+                <p style="color: #555;">Operations Manager</p>
+            </div>
+        </div>
+    </div>
+</section>
+<footer id="contact">
+    <div class="container">
+        <div class="row text-center text-md-start mb-4 align-items-center">
+            <div class="col-md-4 mb-4">
+                <h5>Contact Us</h5>
+                <p><i class="fas fa-map-marker-alt me-2"></i>123 SFS, New Town Yelahanka</p>
+                <p><i class="fas fa-phone me-2"></i>+91 98765 43210</p>
+                <p><i class="fas fa-envelope me-2"></i>info@sweetdelights.com</p>
+            </div>
+            <div class="col-md-4 mb-4 newsletter">
+                <h5>Newsletter</h5>
+                <p>Get the latest offers & treats</p>
+                <div class="d-flex flex-column flex-sm-row gap-2">
+                    <input type="email" class="form-control" placeholder="Enter your email">
+                    <button class="btn btn-dark">Subscribe</button>
+                </div>
+            </div>
+            <div class="col-md-4 text-center text-md-start footer-follow">
+                <h5>Follow Us</h5>
+                <div class="d-flex justify-content-center justify-content-md-start mb-3">
+                        <a href="https://www.facebook.com/" class="me-3 text-dark fs-4"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/" class="me-3 text-dark fs-4"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/" class="me-3 text-dark fs-4"><i class="fab fa-twitter"></i></a>
+                        <a href="https://in.pinterest.com/" class="text-dark fs-4"><i class="fab fa-pinterest"></i></a>
+                </div>
+                <h5>Opening Hours</h5>
+                <p><b>Mon - Sat:</b> 8am - 8pm</p>
+            </div>
+        </div>
+        <div class="text-center pt-3 border-top">
+            <p class="mb-0">&copy; 2025 Sweet Delights Bakery. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+<script>
+    let sections = document.querySelectorAll('.hero, section, .shop-gallery img, .shadow-sm, .team-member');
+let observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        }
+    });
+}, { threshold: 0.2 });
+
+sections.forEach(sec => observer.observe(sec));
+</script>
+</body>
+</html>

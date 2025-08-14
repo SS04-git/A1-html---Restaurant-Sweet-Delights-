@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Delights Bakery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" 
+      rel="stylesheet" 
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" 
+      crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f4e4;
+            font-family: 'Poppins', sans-serif;
+        }
+        .navbar {
+            background-color: #afdae9;
+        }
+        .navbar a {
+            color: #333 !important;
+            font-weight: 500;
+        }
+        .nav-underline {
+            position: relative;
+            display: inline-block;
+        }
+        .nav-underline::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: currentColor;
+            transition: width 0.3s ease, transform 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .nav-underline:hover::after {
+            width: 90%;
+            transform: translateX(-50%);
+        }
+        .btn-outline-dark:hover {
+            color: white !important;
+            background-color: #212529 !important; 
+            border-color: #212529 !important;
+        }
+        .hero {
+            background: linear-gradient(rgba(248, 244, 228, 0.9), rgba(248, 244, 228, 0.5)), url('https://images.ctfassets.net/rric2f17v78a/34zHlAZZTz5BcHOjjGEQaC/114c8885cdd79f19ca1c5e000e0bde93/Bakery-Website.jpg') center/cover no-repeat;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.2s ease, transform 1.2s ease;
+        }
+        .hero.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .shape-bg {
+            position: relative;
+            padding: 48px;
+            background-color: #fff;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        .shape-bg.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .shape-bg::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            background-color: #afdae9;
+            clip-path: circle(40% at top left);
+            z-index: -1;
+        }
+        .services {
+            background-color: #fff;
+            padding: 48px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        .services.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .service-card {
+            background: #f8f4e4;
+            border-radius: 12px;
+            padding: 32px;
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        .service-card i {
+            font-size: 40px;
+            color: #afdae9;
+            margin-bottom: 16px;
+        }
+.carousel-wrapper {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.slides {
+  display: flex;
+  gap: 20px; /* space between slides */
+  transition: transform 0.5s ease-in-out;
+  box-sizing: border-box;
+}
+
+.slide {
+  flex: 0 0 calc(33.333% - 13.333px); /* 3 slides per view */
+  position: relative;
+}
+
+.slide img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.slide .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 8px;
+  text-align: center;
+  padding: 10px;
+}
+
+.slide:hover .overlay {
+  opacity: 1;
+}
+
+.control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;     
+  border: none;
+  font-size: 32px;
+  background: transparent; 
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+        .limited {
+            background: linear-gradient(135deg, #fff 0%, #f0f8fa 100%);
+            padding: 64px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        .limited.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .limited-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .limited-card:hover {
+            transform: translateY(-5px);
+        }
+        .limited-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .limited-card-body {
+            padding: 16px;
+        }
+        .testimonial {
+            background-color: #fff;
+            padding: 48px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        .testimonial.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .testimonial img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+        footer {
+    background-color: #afdae9;
+    color: #333;
+    padding: 48px 0;
+}
+.newsletter input {
+    border: none;
+    padding: 8px;
+    width: 70%;
+    border-radius: 4px;
+}
+.newsletter button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+}
+        @media (min-width: 900px) {
+            #contact .footer-follow {
+                padding-left: 150px; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light py-3 shadow-sm sticky-top" style="background-color: #afdae9;">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html" style="font-size: 28px"><i>Sweet Delights</i></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a href="about.html" class="nav-link nav-underline">About Us</a></li>
+                    <li class="nav-item"><a href="product.html" class="nav-link nav-underline">Products</a></li>
+                    <li class="nav-item"><a href="services.html" class="nav-link nav-underline">Services</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link nav-underline">Contact Us</a></li>
+                </ul>
+                <div class="d-flex gap-2">
+                    <a href="order.html" class="btn btn-outline-dark">Order Now</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero text-dark">
+        <div>
+            <h1 class="fw-bold mb-3" style="font-size: 6rem;">Sweet Delights</h1>
+            <br>
+            <h3><i>Freshly Baked Happiness <br>from our oven to your heart</i></h3>
+        </div>
+    </section>
+
+    <section id="about" class="shape-bg my-5 container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2 class="fw-bold mb-3">About Us</h2>
+                <p>At Sweet Delights, we craft artisanal pastries, bread, and cakes with love and the finest ingredients. Every bite tells a story of passion and quality.</p>
+                <a href="about.html" class="btn btn-outline-dark">Know More</a>
+            </div>
+            <div class="col-md-6">
+                <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/0f/76/00/caption.jpg?w=900&h=500&s=1" class="img-fluid rounded shadow" alt="Bakery">
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container text-center mb-5">
+            <h2 class="fw-bold mb-3">Our Services</h2>
+            <p>We offer a variety of services to make your moments special.</p>
+        </div>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <i class="fas fa-birthday-cake"></i>
+                        <h5>Custom Cakes</h5>
+                        <p>Personalized designs and flavors for your special events.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <i class="fas fa-truck"></i>
+                        <h5>Home Delivery</h5>
+                        <p>Fresh bakery items delivered straight to your doorstep.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <i class="fas fa-coffee"></i>
+                        <h5>Café Lounge</h5>
+                        <p>Relax and enjoy our cozy café with freshly brewed coffee.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="py-5">
+  <div class="container text-center">
+    <h2 class="fw-bold mb-3">Our Products</h2>
+
+    <div class="carousel-wrapper">
+      <div class="slides">
+
+        <div class="slide menu-item">
+          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587" alt="Cake">
+          <div class="overlay">Cake</div>
+        </div>
+        <div class="slide menu-item">
+          <img src="https://www.southernliving.com/thmb/bbDY1d_ySIrCFcq8WNBkR-3x6pU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/2589601_Mailb_Mailbox_Apple_Pie_003-da802ff7a8984b2fa9aa0535997ab246.jpg" alt="Pie">
+          <div class="overlay">Pie</div>
+        </div>
+        <div class="slide menu-item">
+          <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff" alt="Bread">
+          <div class="overlay">Bread</div>
+        </div>
+        <div class="slide menu-item">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8_ilu8h3E7s0yQIVXKB_8XN-u1q8ZRvYWvg&s" alt="Cookies">
+          <div class="overlay">Cookies</div>
+        </div>
+        <div class="slide menu-item">
+          <img src="https://www.pillsbury.in/wp-content/uploads/2021/09/Cupcakes.jpg" alt="Cupcake">
+          <div class="overlay">Cupcake</div>
+        </div>
+        <div class="slide menu-item">
+          <img src="https://edibletimes.com/wp-content/uploads/2023/07/fruit-tarts-1.jpg" alt="Tart">
+          <div class="overlay">Tart</div>
+        </div>
+      </div>
+
+      <button class="control prev" onclick="moveSlide(-1)">&#10094;</button>
+      <button class="control next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+  </div>
+</section>
+
+    <section id="limited" class="limited">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4 mb-md-0" data-aos="fade-right">
+                    <img src="https://liliyum.com/cdn/shop/files/Celebration_Cakes_540x.jpg?v=1626270938" alt="Limited Edition Cake" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <h2 class="fw-bold mb-3">Limited Edition Delight</h2>
+                    <p class="lead text-muted">
+                        Indulge in our exclusive seasonal creation — crafted with the finest ingredients and available for a short time only. Perfect for making your celebrations truly unforgettable.
+                    </p>
+                    <a href="order.html" class="btn btn-outline-dark">Order Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="py-5">
+        <div class="container text-center mb-5">
+            <h2 class="fw-bold">What Our Customers Say</h2>
+        </div>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card shadow-sm h-100 text-center p-4 border-0">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer" class="rounded-circle mx-auto mb-3" width="80" height="80">
+                        <p class="mb-3">"The cakes here are heavenly! The attention to detail and flavor is unmatched."</p>
+                        <h6 class="fw-bold">- Sarah M.</h6>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm h-100 text-center p-4 border-0">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer" class="rounded-circle mx-auto mb-3" width="80" height="80">
+                        <p class="mb-3">"Absolutely loved the pastries! Fresh, delicious, and beautifully made."</p>
+                        <h6 class="fw-bold">- John D.</h6>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm h-100 text-center p-4 border-0">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Customer" class="rounded-circle mx-auto mb-3" width="80" height="80">
+                        <p class="mb-3">"A delightful experience from order to delivery. Highly recommended!"</p>
+                        <h6 class="fw-bold">- Emily R.</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="row text-center text-md-start mb-4 align-items-center">
+                <div class="col-md-4 mb-4">
+                    <h5>Contact Us</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i>123 SFS, New Town Yelahanka</p>
+                    <p><i class="fas fa-phone me-2"></i>+91 98765 43210</p>
+                    <p><i class="fas fa-envelope me-2"></i>info@sweetdelights.com</p>
+                </div>
+                <div class="col-md-4 mb-4 newsletter">
+                    <h5>Newsletter</h5>
+                    <p>Get the latest offers & treats</p>
+                    <div class="d-flex flex-column flex-sm-row gap-2">
+                        <input type="email" class="form-control" placeholder="Enter your email">
+                        <button class="btn btn-dark">Subscribe</button>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center text-md-start footer-follow">
+                    <h5>Follow Us</h5>
+                    <div class="d-flex justify-content-center justify-content-md-start mb-3">
+                        <a href="https://www.facebook.com/" class="me-3 text-dark fs-4"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/" class="me-3 text-dark fs-4"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/" class="me-3 text-dark fs-4"><i class="fab fa-twitter"></i></a>
+                        <a href="https://in.pinterest.com/" class="text-dark fs-4"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                    <h5>Opening Hours</h5>
+                    <p><b>Mon - Sat:</b> 8am - 8pm <br></p>
+                </div>
+            </div>
+            <div class="text-center pt-3 border-top">
+                <p class="mb-0">&copy; 2025 Sweet Delights Bakery. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+let index = 0;
+const slides = document.querySelector('.slides');
+const totalSlides = document.querySelectorAll('.slide').length;
+const visible = 3; // slides visible at a time
+
+function moveSlide(direction) {
+  index += direction;
+  if (index < 0) index = totalSlides - visible;
+  if (index > totalSlides - visible) index = 0;
+  slides.style.transform = `translateX(-${index * (100 / visible)}%)`;
+}
+setInterval(() => moveSlide(1), 4000);
+
+let sections = document.querySelectorAll('.hero, .shape-bg, .services, .limited, .card'); 
+let observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        }
+    });
+}, { threshold: 0.2 });
+
+sections.forEach(sec => observer.observe(sec));
+
+let carouselElement = document.querySelector('#menuCarousel');
+let carousel = new bootstrap.Carousel(carouselElement, {
+  interval: 3000,
+  ride: 'carousel'
+});
+</script>
+
+</body>
+</html>

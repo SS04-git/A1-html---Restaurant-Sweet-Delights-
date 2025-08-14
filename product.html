@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Now - Sweet Delights Bakery</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" 
+      rel="stylesheet" 
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" 
+      crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    body {
+        background-color: #f8f4e4;
+        font-family: 'Poppins', sans-serif;
+    }
+    .navbar {
+        background-color: #afdae9;
+    }
+    .navbar a {
+        color: #333 !important;
+        font-weight: 500;
+    }
+    .nav-underline {
+        position: relative;
+        display: inline-block;
+    }
+    .nav-underline::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background-color: currentColor;
+        transition: width 0.3s ease, transform 0.3s ease;
+        transform: translateX(-50%);
+    }
+    .nav-underline:hover::after {
+        width: 90%;
+        transform: translateX(-50%);
+    }
+    .btn-outline-dark:hover {
+        color: white !important;
+        background-color: #212529 !important; 
+        border-color: #212529 !important;
+    }
+    h1.section-title {
+        font-size: 48px;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 32px;
+    }
+    .order-form input,
+    .order-form select,
+    .order-form textarea {
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+    .order-form button {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+    .order-form button:hover {
+        background-color: #555;
+    }
+    .hero {
+        background: linear-gradient(rgba(248, 244, 228, 0.9), rgba(248, 244, 228, 0.5)), 
+        url('https://liliyum.com/cdn/shop/files/08-Tea-Cakes-1000px_540x.jpg?v=1613709429') center/cover no-repeat;
+        height: 35vh;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        text-align:center;
+    }
+    footer {
+        background-color: #afdae9;
+        color: #333;
+        padding: 48px 0;
+    }
+    .newsletter input {
+        border: none;
+        padding: 8px;
+        width: 70%;
+        border-radius: 4px;
+    }
+    .newsletter button {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+    }
+    @media (min-width: 900px) {
+        #contact .footer-follow {
+            padding-left: 150px; 
+        }
+    }
+    .filter-section {
+        background-color: #f0e6d2;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .filter-section h5 {
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    .product-card {
+        border: none;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+        background-color: #fff;
+    }
+    .product-card:hover {
+        transform: scale(1.05);
+    }
+    .product-card img {
+        height: 200px;
+        object-fit: cover;
+    }
+    .product-card .card-body h5 {
+        font-weight: 600;
+    }
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light py-3 shadow-sm sticky-top" style="background-color: #afdae9;">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html" style="font-size: 28px">
+            <i>Sweet Delights</i>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a href="about.html" class="nav-link nav-underline">About Us</a></li>
+                <li class="nav-item"><a href="product.html" class="nav-link nav-underline">Products</a></li>
+                <li class="nav-item"><a href="services.html" class="nav-link nav-underline">Services</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link nav-underline">Contact Us</a></li>
+            </ul>
+            <div class="d-flex gap-2">
+                <a href="order.html" class="btn btn-outline-dark">Order Now</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<section class="hero text-dark">
+    <div>
+        <h1 class="fw-bold mb-3">Our Products</h1>
+        <p>Browse & filter our delicious treats!</p>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="filter-section mb-4">
+                    <h5>Filter by Category</h5>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="cakes">
+                        <label class="form-check-label" for="cakes">Cakes</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="pastries">
+                        <label class="form-check-label" for="pastries">Pastries</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="bread">
+                        <label class="form-check-label" for="bread">Bread</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="cookies">
+                        <label class="form-check-label" for="cookies">Cookies</label>
+                    </div>
+                </div>
+                <div class="filter-section">
+                    <h5>Filter by Price</h5>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="price" id="under100">
+                        <label class="form-check-label" for="under100">Under ₹100</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="price" id="100to500">
+                        <label class="form-check-label" for="100to500">₹100 - ₹500</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="price" id="500plus">
+                        <label class="form-check-label" for="500plus">₹500+</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card product-card">
+                            <img src="https://i0.wp.com/www.bakingbond.co.in/wp-content/uploads/2023/04/Chocolate_Cake_05.jpg?fit=520%2C520&ssl=1" class="card-img-top" alt="Chocolate Cake">
+                            <div class="card-body">
+                                <h5>Chocolate Cake</h5>
+                                <p>₹450</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card product-card">
+                            <img src="https://sarahsvegankitchen.com/wp-content/uploads/2024/05/Vegan-Croissants-1.jpg" class="card-img-top" alt="Butter Croissant">
+                            <div class="card-body">
+                                <h5>Butter Croissant</h5>
+                                <p>₹80</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card product-card">
+                            <img src="https://thescranline.com/wp-content/uploads/2023/06/RED-VELVET-CAKE-23-S-01.jpg" class="card-img-top" alt="Red Velvet Cake">
+                            <div class="card-body">
+                                <h5>Red Velvet Cake</h5>
+                                <p>₹500</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card product-card">
+                            <img src="https://www.sprinklesomesugar.com/wp-content/uploads/2016/07/IMG_8404-2.jpg" class="card-img-top" alt="Blueberry Muffin">
+                            <div class="card-body">
+                                <h5>Blueberry Muffin</h5>
+                                <p>₹120</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card product-card">
+                            <img src="https://www.kyleecooks.com/wp-content/uploads/2019/10/Homemade-Cinnamon-Rolls-SQ-5.jpg" class="card-img-top" alt="Cinnamon Roll">
+                            <div class="card-body">
+                                <h5>Cinnamon Roll</h5>
+                                <p>₹90</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card product-card">
+                            <img src="https://www.allrecipes.com/thmb/pWdQF6WFiDz3-SB-N8hCqlxBE64=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/12334-strawberry-tarts-VAT-002-2x-a3a5059dcdaa4bab92d2dfd3a2f2197e.jpg" class="card-img-top" alt="Strawberry Tart">
+                            <div class="card-body">
+                                <h5>Strawberry Tart</h5>
+                                <p>₹250</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card product-card">
+                            <img src="https://www.mybakingaddiction.com/wp-content/uploads/2011/07/unwrapped-vanilla-cupcake-hero.jpg" class="card-img-top" alt="Vanilla Cupcake">
+                            <div class="card-body">
+                                <h5>Vanilla Cupcake</h5>
+                                <p>₹70</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card product-card">
+                            <img src="https://handletheheat.com/wp-content/uploads/2020/10/BAKERY-STYLE-CHOCOLATE-CHIP-COOKIES-9-637x637-1.jpg" class="card-img-top" alt="Chocolate Chip Cookie">
+                            <div class="card-body">
+                                <h5>Chocolate Chip Cookie</h5>
+                                <p>₹50</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card product-card">
+                            <img src="https://sallysbakingaddiction.com/wp-content/uploads/2013/07/salted-caramel-apple-pie-slice-ice-cream.jpg" class="card-img-top" alt="Lemon Pie">
+                            <div class="card-body">
+                                <h5>Apple Pie</h5>
+                                <p>₹300</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer id="contact">
+    <div class="container">
+        <div class="row text-center text-md-start mb-4 align-items-center">
+            <div class="col-md-4 mb-4">
+                <h5>Contact Us</h5>
+                <p><i class="fas fa-map-marker-alt me-2"></i>123 SFS, New Town Yelahanka</p>
+                <p><i class="fas fa-phone me-2"></i>+91 98765 43210</p>
+                <p><i class="fas fa-envelope me-2"></i>info@sweetdelights.com</p>
+            </div>
+            <div class="col-md-4 mb-4 newsletter">
+                <h5>Newsletter</h5>
+                <p>Get the latest offers & treats</p>
+                <div class="d-flex flex-column flex-sm-row gap-2">
+                    <input type="email" class="form-control" placeholder="Enter your email">
+                    <button class="btn btn-dark">Subscribe</button>
+                </div>
+            </div>
+            <div class="col-md-4 text-center text-md-start footer-follow">
+                <h5>Follow Us</h5>
+                <div class="d-flex justify-content-center justify-content-md-start mb-3">
+                    <a href="https://www.facebook.com/" class="me-3 text-dark fs-4"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/" class="me-3 text-dark fs-4"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/" class="me-3 text-dark fs-4"><i class="fab fa-twitter"></i></a>
+                        <a href="https://in.pinterest.com/" class="text-dark fs-4"><i class="fab fa-pinterest"></i></a>
+                </div>
+                <h5>Opening Hours</h5>
+                <p><b>Mon - Sat:</b> 8am - 8pm <br></p>
+            </div>
+        </div>
+        <div class="text-center pt-3 border-top">
+            <p class="mb-0">&copy; 2025 Sweet Delights Bakery. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+let cakeCheckbox = document.getElementById('cakes');
+let productCards = document.querySelectorAll('.product-card');
+
+cakeCheckbox.addEventListener('change', () => {
+  productCards.forEach(card => {
+    let productName = card.querySelector('h5').innerText.toLowerCase();
+    if (cakeCheckbox.checked) {
+      if (productName.includes('cake')) {
+        card.closest('.col-md-4').classList.remove('d-none');
+      } else {
+        card.closest('.col-md-4').classList.add('d-none');
+      }
+    } else {
+      card.closest('.col-md-4').classList.remove('d-none');
+    }
+  });
+});
+
+let orderForm = document.querySelector('.order-form');
+orderForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    alert("Thank you! Your order has been placed. We'll contact you soon.");
+    orderForm.reset();
+});
+</script>
+
+
+</body>
+</html>
